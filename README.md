@@ -1,13 +1,13 @@
 <div align="center">
 <h1 align="center">BILIBILI-HELPER</h1>
 
-[![GitHub stars](https://img.shields.io/github/stars/OreosLab/bili?style=flat-square)](https://github.com/OreosLab/bili/stargazers)
-[![GitHub forks](https://img.shields.io/github/forks/OreosLab/bili?style=flat-square)](https://github.com/OreosLab/bili/network)
-[![GitHub issues](https://img.shields.io/github/issues/OreosLab/bili?style=flat-square)](https://github.com/OreosLab/bili/issues)
-[![GitHub license](https://img.shields.io/github/license/OreosLab/bili?style=flat-square)](https://github.com/OreosLab/bili/blob/main/LICENSE)
-[![GitHub All Releases](https://img.shields.io/github/downloads/OreosLab/bili/total?style=flat-square)](https://github.com/OreosLab/bili/releases)
+[![GitHub stars](https://img.shields.io/github/stars/Whuihuan/bili?style=flat-square)](https://github.com/Whuihuan/bili/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/Whuihuan/bili?style=flat-square)](https://github.com/Whuihuan/bili/network)
+[![GitHub issues](https://img.shields.io/github/issues/Whuihuan/bili?style=flat-square)](https://github.com/Whuihuan/bili/issues)
+[![GitHub license](https://img.shields.io/github/license/Whuihuan/bili?style=flat-square)](https://github.com/Whuihuan/bili/blob/main/LICENSE)
+[![GitHub All Releases](https://img.shields.io/github/downloads/Whuihuan/bili/total?style=flat-square)](https://github.com/Whuihuan/bili/releases)
 [![Docker Pulls](https://img.shields.io/docker/pulls/superng6/bilibili-helper?style=flat-square)](https://hub.docker.com/r/superng6/bilibili-helper)
-[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/OreosLab/bili?style=flat-square)](https://github.com/OreosLab/bili/releases)
+[![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/Whuihuan/bili?style=flat-square)](https://github.com/Whuihuan/bili/releases)
 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FJunzhouLiu%2FBILIBILI-HELPER-PRE&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=true)](https://hits.seeyoufarm.com)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FJunzhouLiu%2FBILIBILI-HELPER-PRE.svg?type=small)](https://app.fossa.com/projects/git%2Bgithub.com%2FJunzhouLiu%2FBILIBILI-HELPER-PRE?ref=badge_small)
 
@@ -19,7 +19,7 @@
 
 **如果觉得好用，顺手点个 Star 吧 ❤**
 
-~~**仓库地址：[JunzhouLiu/BILIBILI-HELPER](https://github.com/OreosLab/bili)**~~
+~~**仓库地址：[JunzhouLiu/BILIBILI-HELPER](https://github.com/Whuihuan/bili)**~~
 
 **请不要滥用相关 API，让我们一起爱护 B 站 ❤**
 
@@ -81,7 +81,7 @@
 2. 将获取的到的 `Cookie` 字符串和 UA 字符串填写到 `config.json` 中的 `biliCookies` 和 `userAgent` 字段值中。
 3. 在当前目录执行 `java -jar BILIBILI-HELPER.jar` 即可开始执行任务。如果 `config.json` 和 jar 包不在同一目录，可通过例如 `java -jar BILIBILI-HELPER.jar /tmp/config.json` 的方式指定特定路径的配置文件。
 
-[3]: https://github.com/OreosLab/bili/releases/latest
+[3]: https://github.com/Whuihuan/bili/releases/latest
 
 ### 二、使用 Docker
 
@@ -99,7 +99,7 @@
 
 ### 五、使用青龙管理面板
 
-* **青龙一键拉取命令 `ql raw https://raw.githubusercontent.com/OreosLab/bili/main/bilibili_helper.sh`**
+* **青龙一键拉取命令 `ql raw https://raw.githubusercontent.com/Whuihuan/bili/main/bilibili_helper.sh`**
 * **[青龙管理面板部署](docs/qinglong.md)**
 
 ## 自定义功能配置
@@ -228,7 +228,7 @@
 3. **请妥善保管自己的账号和密码以及类似 Cookie 等敏感信息，不要把自己的敏感信息提供给他人，谨防账号泄露或被盗，这是很危险的行为。**（**网络安全教育普及任重而道远**）
 4. 本工具源码仅在 [JunzhouLiu/BILIBILI-HELPER-PRE](https://github.com/JunzhouLiu/BILIBILI-HELPER-PRE) 开源。
 5. 任何单位或个人因下载使用本开源项目代码而产生的任何意外、疏忽、合约毁坏、诽谤、版权或知识产权侵犯及其造成的损失（包括但不限于直接、间接、附带或衍生的损失等），项目维护者不承担任何法律责任。
-6. 本项目采用 [MIT License](https://github.com/OreosLab/bili/blob/main/LICENSE) 若违反本免责声明条款或违反法律法规所造成的法律责任(包括但不限于民事赔偿和刑事责任），由使用者自行承担。
+6. 本项目采用 [MIT License](https://github.com/Whuihuan/bili/blob/main/LICENSE) 若违反本免责声明条款或违反法律法规所造成的法律责任(包括但不限于民事赔偿和刑事责任），由使用者自行承担。
 7. 使用本项目视为明确并同意本声明条款列举的全部内容，对使用本项目可能存在的风险和相关后果将完全由使用者自行承担，项目维护者不承担任何法律责任。
 
 ## API 参考列表
@@ -256,4 +256,4 @@ qq 群二维码
 
 ## Stargazers over time
 
-[![Stargazers over time](https://starchart.cc/OreosLab/bili.svg)](https://starchart.cc/OreosLab/bili)
+[![Stargazers over time](https://starchart.cc/Whuihuan/bili.svg)](https://starchart.cc/Whuihuan/bili)
