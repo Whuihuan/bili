@@ -12,7 +12,6 @@ import lombok.extern.slf4j.Slf4j;
 import top.misec.api.ApiList;
 import top.misec.api.OftenApi;
 import top.misec.config.ConfigLoader;
-import top.misec.utils.HelpUtil;
 import top.misec.utils.HttpUtils;
 
 /**
@@ -64,7 +63,7 @@ public class VideoWatch implements Task {
      * @param bvid 要分享的视频bvid.
      */
     public void dailyAvShare(String bvid) {
-        String requestBody = "aid=" + HelpUtil.bv2av(bvid) + "&csrf=" + ConfigLoader.helperConfig.getBiliVerify().getBiliJct();
+        String requestBody = "bvid=" + bvid + "&csrf=" + ConfigLoader.helperConfig.getBiliVerify().getBiliJct();
         JsonObject result = HttpUtils.doPost(ApiList.AV_SHARE, requestBody);
         String videoTitle = OftenApi.getVideoTitle(bvid);
         if (result.get(STATUS_CODE_STR).getAsInt() == 0) {

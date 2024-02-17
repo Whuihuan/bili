@@ -12,7 +12,6 @@ import lombok.extern.slf4j.Slf4j;
 import top.misec.api.ApiList;
 import top.misec.api.OftenApi;
 import top.misec.config.ConfigLoader;
-import top.misec.utils.HelpUtil;
 import top.misec.utils.HttpUtils;
 import top.misec.utils.SleepTime;
 
@@ -133,7 +132,7 @@ public class CoinAdd implements Task {
             headers.put("Referer", "https://www.bilibili.com/video/" + bvid);
             headers.put("Origin", "https://www.bilibili.com");
 
-            String requestBody = "aid=" + HelpUtil.bv2av(bvid)
+            String requestBody = "bvid=" + bvid
                     + "&multiply=" + multiply
                     + "&select_like=" + selectLike
                     + "&cross_domain=" + "true"
