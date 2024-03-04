@@ -84,7 +84,7 @@ public class WeComAppPush extends AbstractPush {
         }
 
         byte[] bodyBytes = pushBody.getBytes(StandardCharsets.UTF_8);
-        if (bodyBytes.length <= WE_COM_APP_MESSAGE_MAX_BYTE || StringUtils.isBlank(metaInfo.getMediaid())) {
+        if (bodyBytes.length <= WE_COM_APP_MESSAGE_MAX_BYTE || !StringUtils.isBlank(metaInfo.getMediaid())) {
             return Collections.singletonList(pushBody);
         }
         log.info("推送内容长度[{}]大于最大长度[{}]进行分割处理", bodyBytes.length, WE_COM_APP_MESSAGE_MAX_BYTE);

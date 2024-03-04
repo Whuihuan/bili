@@ -81,11 +81,11 @@ public class OftenApi {
      * @return userName 查询到的用户名，为1则未查询到用户
      */
     public static String queryUserNameByUid(String uid) {
-        String urlParameter = "?mid=" + uid + "&jsonp=jsonp";
+        String urlParameter = "?mid=" + uid;
         String userName = "1";
         JsonObject jsonObject = HttpUtils.doGet(ApiList.QUERY_USER_NAME + urlParameter);
         if (jsonObject.get("code").getAsInt() == 0) {
-            userName = jsonObject.getAsJsonObject("data").get("name").getAsString();
+            userName = jsonObject.getAsJsonObject("data").getAsJsonObject("card").get("name").getAsString();
         } else {
             log.info("查询充电对象的用户名失败，原因：{}", jsonObject);
         }

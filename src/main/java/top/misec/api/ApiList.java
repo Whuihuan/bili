@@ -56,7 +56,7 @@ public class ApiList {
      */
     public static final String CHARGE_COMMENT = "https://api.bilibili.com/x/ugcpay/trade/elec/message";
     public static final String CHARGE_QUERY = "https://api.bilibili.com/x/ugcpay/web/v2/trade/elec/panel";
-    public static final String QUERY_USER_NAME = "https://api.bilibili.com/x/space/acc/info";
+    public static final String QUERY_USER_NAME = "https://api.bilibili.com/x/web-interface/card";
     /**
      * 领取大会员福利.
      */
