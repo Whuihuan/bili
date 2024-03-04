@@ -44,9 +44,9 @@ public class ConfigLoader {
         String customConfig = ReadFileUtils.readFile(filePath);
         if (customConfig != null) {
             mergeConfig(GsonUtils.fromJson(customConfig, HelperConfig.class));
-            log.info("读取自定义配置文件成功,若部分配置项不存在则会采用默认配置.");
+            log.info("读取自定义配置文件成功,若部分配置项不存在则会采用默认配置");
         } else {
-            log.info("未在 ：{} 目录读取到配置文件", filePath);
+            log.info("未在 {} 目录读取到配置文件", filePath);
         }
         validationConfig();
         helperConfig.getBiliVerify().initCookiesMap();

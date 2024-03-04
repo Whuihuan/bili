@@ -4,7 +4,7 @@ import com.google.gson.JsonObject;
 import lombok.extern.slf4j.Slf4j;
 import top.misec.api.ApiList;
 import top.misec.utils.HttpUtils;
-import top.misec.utils.SleepTime;
+import top.misec.utils.SleepUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -26,19 +26,51 @@ public class DailyTask {
 
     public DailyTask() {
         dailyTasks = new ArrayList<>();
+        /**
+         * 观看分享视频
+         */
         dailyTasks.add(new VideoWatch());
+        /**
+         * 漫画签到
+         */
         dailyTasks.add(new MangaSign());
+        /**
+         * 投币任务
+         */
         dailyTasks.add(new CoinAdd());
+        /**
+         * 银瓜子换硬币
+         */
         dailyTasks.add(new Silver2Coin());
+        /**
+         * 直播签到
+         */
         dailyTasks.add(new LiveChecking());
+        /**
+         * 直播间送礼
+         */
         dailyTasks.add(new GiveGift());
+        /**
+         * 充电任务
+         */
         dailyTasks.add(new ChargeMe());
+        /**
+         * 漫画权益领取
+         */
         dailyTasks.add(new GetVipPrivilege());
+        /**
+         * 赛事预测
+         */
         dailyTasks.add(new MatchGame());
+        /**
+         * 漫画阅读
+         */
         dailyTasks.add(new MangaRead());
         Collections.shuffle(dailyTasks);
-        dailyTasks.add(0, new UserCheck());
-        dailyTasks.add(1, new CoinLogs());
+        /**
+         * 硬币日志
+         */
+        dailyTasks.add(0, new CoinLogs());
     }
 
     /**
@@ -62,6 +94,14 @@ public class DailyTask {
     }
 
     public void doDailyTask() {
+        /**
+         * 判断Cookies是否有效
+         */
+        UserCheck userCheck = new UserCheck();
+        if(!userCheck.isCookieValid()){
+            ServerPush.doServerPush();
+            return;
+        }
         try {
             dailyTasks.forEach(task -> {
                 log.info("------{}开始------", task.getName());
@@ -71,7 +111,7 @@ public class DailyTask {
                     log.error("任务[{}]运行失败", task.getName(), e);
                 }
                 log.info("------{}结束------\n", task.getName());
-                new SleepTime().sleepDefault();
+                SleepUtils.randomSleep();
             });
             log.info("本日任务已全部执行完毕");
             calculateUpgradeDays();

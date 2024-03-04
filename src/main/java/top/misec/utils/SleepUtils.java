@@ -6,15 +6,15 @@ import lombok.extern.slf4j.Slf4j;
 import top.misec.config.ConfigLoader;
 
 /**
- * sleep.
+ * 随机延时.
  *
  * @author junzhou
  */
 @Slf4j
-public class SleepTime {
+public class SleepUtils {
+    private static int defaultTime = ConfigLoader.helperConfig.getTaskConfig().getTaskIntervalTime();
 
-    public void sleepDefault() {
-        Integer defaultTime = ConfigLoader.helperConfig.getTaskConfig().getTaskIntervalTime();
+    public static void randomSleep() {
         if (defaultTime == 0) {
             //兼容云函数旧版本配置
             defaultTime = 10;

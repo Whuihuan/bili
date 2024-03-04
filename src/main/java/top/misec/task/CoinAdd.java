@@ -13,7 +13,7 @@ import top.misec.api.ApiList;
 import top.misec.api.OftenApi;
 import top.misec.config.ConfigLoader;
 import top.misec.utils.HttpUtils;
-import top.misec.utils.SleepTime;
+import top.misec.utils.SleepUtils;
 
 /**
  * 投币任务.
@@ -106,7 +106,7 @@ public class CoinAdd implements Task {
             boolean flag = coinAdd(bvid, 1, ConfigLoader.helperConfig.getTaskConfig().getSelectLike());
             if (flag) {
                 needCoins--;
-                new SleepTime().sleepDefault();
+                SleepUtils.randomSleep();
             }
             if (addCoinOperateCount > 15) {
                 log.info("尝试投币/投币失败次数太多");

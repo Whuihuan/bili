@@ -14,7 +14,7 @@ import top.misec.api.ApiList;
 import top.misec.api.OftenApi;
 import top.misec.config.ConfigLoader;
 import top.misec.utils.HttpUtils;
-import top.misec.utils.SleepTime;
+import top.misec.utils.SleepUtils;
 
 /**
  * 赛事预测.
@@ -104,7 +104,7 @@ public class MatchGame implements Task {
                     log.info("拟预测的队伍是:{},预测硬币数为:{}", teamName, coinNumber);
                     currentCoin -= coinNumber;
                     doPrediction(contestId, questionId, teamId, coinNumber);
-                    new SleepTime().sleepDefault();
+                    SleepUtils.randomSleep();
                 }
             }
         } else {
