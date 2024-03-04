@@ -13,7 +13,8 @@ import top.misec.utils.GsonUtils;
 import top.misec.utils.HttpUtils;
 
 import java.io.Serializable;
-import java.util.Arrays;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -28,7 +29,7 @@ import java.util.stream.Collectors;
 @Slf4j
 public class WeComAppPush extends AbstractPush {
 
-    private static final int WE_COM_APP_MESSAGE_MAX_LENGTH = 1000;
+    private static final int WE_COM_APP_MESSAGE_MAX_BYTE = 2048;
 
     @Override
     protected String generatePushUrl(PushMetaInfo metaInfo) {
@@ -81,14 +82,37 @@ public class WeComAppPush extends AbstractPush {
         if (StringUtils.isBlank(pushBody)) {
             return Collections.emptyList();
         }
-        if (pushBody.length() > WE_COM_APP_MESSAGE_MAX_LENGTH && StringUtils.isBlank(metaInfo.getMediaid())) {
-            log.info("推送内容长度[{}]大于最大长度[{}]进行分割处理", pushBody.length(), WE_COM_APP_MESSAGE_MAX_LENGTH);
-            List<String> pushContent = Arrays.stream(splitStringByLength(pushBody, WE_COM_APP_MESSAGE_MAX_LENGTH)).collect(Collectors.toList());
-            log.info("分割数量：{}", pushContent.size());
-            return pushContent;
-        }
 
-        return Collections.singletonList(pushBody);
+        byte[] bodyBytes = pushBody.getBytes(StandardCharsets.UTF_8);
+        if (bodyBytes.length <= WE_COM_APP_MESSAGE_MAX_BYTE || StringUtils.isBlank(metaInfo.getMediaid())) {
+            return Collections.singletonList(pushBody);
+        }
+        log.info("推送内容长度[{}]大于最大长度[{}]进行分割处理", bodyBytes.length, WE_COM_APP_MESSAGE_MAX_BYTE);
+        // 分割消息体
+        List<String> segments = getSegments(pushBody);
+        log.info("分割数量：{}", segments.size());
+        return segments;
+    }
+
+    private static List<String> getSegments(String pushBody) {
+        List<String> segments = new ArrayList<>();
+        int count = 0;
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < pushBody.length(); i++) {
+            String tmpStr = pushBody.substring(i, i + 1);
+            int tmpStrByteLength = tmpStr.getBytes(StandardCharsets.UTF_8).length;
+
+            // 长度即将超过限制或遍历到最后一个字符时将当前结果加入List
+            if (count + tmpStrByteLength >= WE_COM_APP_MESSAGE_MAX_BYTE || i == pushBody.length() - 1) {
+                segments.add(sb.toString());
+                sb = new StringBuilder(tmpStr);
+                count = 0;
+            } else {
+                sb.append(tmpStr);
+                count += tmpStrByteLength;
+            }
+        }
+        return segments;
     }
 
     @Override

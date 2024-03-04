@@ -29,7 +29,7 @@ public class UserCheck {
         } 
         userJson = HttpUtils.doGet(ApiList.LOGIN);
         //判断Cookies是否有效
-        if (userJson.get(STATUS_CODE_STR).getAsInt() != 0 || userJson.get("data").getAsJsonObject().get("isLogin").getAsBoolean()) {
+        if (userJson.get(STATUS_CODE_STR).getAsInt() != 0 || !userJson.get("data").getAsJsonObject().get("isLogin").getAsBoolean()) {
                 log.warn("Cookies可能失效了,请仔细检查配置中的Cookies是否有效");
                 return false;
         }

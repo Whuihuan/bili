@@ -5,6 +5,7 @@ import java.io.File;
 import lombok.extern.slf4j.Slf4j;
 import top.misec.config.ConfigLoader;
 import top.misec.utils.VersionInfo;
+import top.misec.utils.PushUtils;
 
 /**
  * util test.
@@ -28,7 +29,7 @@ public class UnitTest {
         }
 
     //    new MatchGame().run();
-        //ServerPush.doServerPush();
+        //PushUtils.doPush();
         new UserCheck().isCookieValid();
     }
 }

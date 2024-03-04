@@ -4,6 +4,7 @@ import com.google.gson.JsonObject;
 import lombok.extern.slf4j.Slf4j;
 import top.misec.api.ApiList;
 import top.misec.utils.HttpUtils;
+import top.misec.utils.PushUtils;
 import top.misec.utils.SleepUtils;
 
 import java.util.ArrayList;
@@ -99,7 +100,7 @@ public class DailyTask {
          */
         UserCheck userCheck = new UserCheck();
         if(!userCheck.isCookieValid()){
-            ServerPush.doServerPush();
+            PushUtils.doPush();
             return;
         }
         try {
@@ -118,7 +119,7 @@ public class DailyTask {
         } catch (Exception e) {
             log.error("任务运行异常", e);
         } finally {
-            ServerPush.doServerPush();
+            PushUtils.doPush();
         }
     }
 }
