@@ -6,6 +6,7 @@ import top.misec.api.ApiList;
 import top.misec.utils.HttpUtils;
 import top.misec.utils.PushUtils;
 import top.misec.utils.SleepUtils;
+import top.misec.config.ConfigLoader;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -42,19 +43,25 @@ public class DailyTask {
         /**
          * 银瓜子换硬币
          */
-        dailyTasks.add(new Silver2Coin());
+        if (ConfigLoader.helperConfig.getTaskConfig().silver2Coin) {
+            dailyTasks.add(new Silver2Coin());
+        }
         /**
-         * 直播签到
+         * 直播签到（已下线）
          */
-        dailyTasks.add(new LiveChecking());
+//        dailyTasks.add(new LiveChecking());
         /**
          * 直播间送礼
          */
-        dailyTasks.add(new GiveGift());
+        if(Boolean.TRUE.equals(ConfigLoader.helperConfig.getTaskConfig().getGiveGift())){
+            dailyTasks.add(new GiveGift());
+        }
         /**
          * 充电任务
          */
-        dailyTasks.add(new ChargeMe());
+        if(Boolean.TRUE.equals(ConfigLoader.helperConfig.getTaskConfig().getMonthEndAutoCharge())) {
+            dailyTasks.add(new ChargeMe());
+        }
         /**
          * 漫画权益领取
          */
@@ -62,7 +69,9 @@ public class DailyTask {
         /**
          * 赛事预测
          */
-        dailyTasks.add(new MatchGame());
+        if(Boolean.TRUE.equals(ConfigLoader.helperConfig.getTaskConfig().getMatchGame())){
+            dailyTasks.add(new MatchGame());
+        }
         /**
          * 漫画阅读
          */

@@ -46,11 +46,6 @@ public class ChargeMe implements Task {
             return;
         }
 
-        if (!Boolean.TRUE.equals(ConfigLoader.helperConfig.getTaskConfig().getMonthEndAutoCharge())) {
-            log.info("未开启月底给自己充电功能");
-            return;
-        }
-
         if ("0".equals(userId) || "".equals(userId)) {
             log.info("充电对象uid配置错误，请参考最新的文档");
             return;

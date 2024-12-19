@@ -26,12 +26,6 @@ public class MatchGame implements Task {
 
     @Override
     public void run() {
-
-        if (!ConfigLoader.helperConfig.getTaskConfig().getMatchGame()) {
-            log.info("赛事预测未开启");
-            return;
-        }
-
         double currentCoin = OftenApi.getCoinBalance();
 
         if (currentCoin < ConfigLoader.helperConfig.getTaskConfig().getMinimumNumberOfCoins()) {

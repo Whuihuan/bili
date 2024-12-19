@@ -19,11 +19,6 @@ public class GiveGift implements Task {
     @Override
     public void run() {
         try {
-            /* 从配置类中读取是否需要执行赠送礼物 */
-            if (!Boolean.TRUE.equals(ConfigLoader.helperConfig.getTaskConfig().getGiveGift())) {
-                log.info("未开启自动送出即将过期礼物功能");
-                return;
-            }
             /* 直播间 id */
             String roomId = "";
             /* 直播间 uid 即 up 的 id*/
